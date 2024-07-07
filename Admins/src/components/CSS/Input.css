@@ -1,0 +1,78 @@
+.input {
+    color: white;
+    background-image: url(../../assets/img/input/Document.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.input-container h1 {
+    font-size: 45px;
+    margin-bottom: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input {
+    width: 450px;
+    height: 60px;
+    border: none;
+    padding-left: 10px;
+    border-radius: 10px;
+    outline: none;
+}
+
+form input:focus {
+    outline: red 2px solid;
+}
+
+form button {
+    height: 40px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+.back {
+    background-color: white;
+}
+
+form button a {
+    text-decoration: none;
+    color: black;
+}
+
+form button:hover {
+    opacity: 0.8;
+    scale: 0.9;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .input-container h1 {
+        font-size: 30px;
+    }
+
+    form input {
+        width: 300px;
+    }
+}

@@ -1,0 +1,79 @@
+.hero {
+    background-image: url(../../../assets//img/home/smk.png);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 30px;
+}
+
+.hero img {
+    width: 160px;
+    height: auto;
+    animation: bounce infinite 10s;
+}
+
+.hero h1 {
+    font-size: 27px;
+    width: 500px;
+    text-align: center;
+}
+
+.hero button {
+    width: 130px;
+    height: 40px;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    background-color: red;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+.hero button a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.hero button:hover {
+    scale: 0.9;
+    opacity: 80%;
+}
+
+@keyframes bounce {
+    0%{
+        transform: translateY(5%);
+    }
+    25% {
+        transform: translateY(-5%);
+    }
+    50% {
+        transform: translateY(5%);
+    }
+    75% {
+        transform: translateY(-5%);
+    }
+    100% {
+        transform: translateY(5%);
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .hero img {
+        width: 130px;
+    }
+
+    .hero h1 {
+        font-size: 22px;
+        width: 300px;
+    }
+}

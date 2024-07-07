@@ -1,0 +1,62 @@
+### Register User
+POST http://localhost:5000/api/users/register
+Content-Type: application/json
+
+{
+  "username": "Admin MPK SMKN 26 JAKARTA",
+  "password": "SAHITYA ANANTA MPK 26 JAKARTA",
+  "email": "AdminMPK26Jakarta@gmail.com"
+}
+
+### Login User
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "setio@gmail.com",
+  "password": "123"
+}
+
+
+### CRUD
+
+### Upload File
+POST http://localhost:5000/api/files/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="Contoh.pdf"
+Content-Type: application/pdf
+
+< ../../Uploads/Komputasional.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Get All Files
+GET http://localhost:5000/api/files/get
+
+### Download File
+GET http://localhost:5000/api/files/download/668a9ed879df594da9d6ed07
+
+### Delete File by ID ###
+DELETE http://localhost:5000/api/files/delete/668aa185957b31f909b0acc5
+Content-Type: application/json
+
+### Admin
+### Register Admin
+POST http://localhost:5000/api/admin/Adminregister
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "Rayzen7",
+  "email": "BERSATU KITA TEGUH BERCERAI KITA RUNTUH 71264"
+}
+
+### Login Admin
+POST http://localhost:5000/api/admin/Adminlogin
+Content-Type: application/json
+
+{
+  "email": "Admin@gmail.com",
+  "password": "Admin1"
+}

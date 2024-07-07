@@ -1,0 +1,50 @@
+.learning {
+    background-color: #000000;
+    width: 100%;
+    height: 45vh;
+    color: white;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.learning h1 {
+    font-size: 40px;
+    color: red;
+}
+
+.learning p {
+    font-size: 17px;
+}
+
+.learning button {
+    margin-top: 50px;
+    font-size: 17px;
+    font-weight: 550;
+    outline: none;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.learning button:hover {
+    opacity: 0.8;
+    scale: 0.9;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .learning {
+        height: 37vh;
+    }
+
+    .learning h1 {
+        font-size: 32px;
+    }
+
+    .learning p {
+        font-size: 15px;
+        padding: 0 25px;
+    }
+}

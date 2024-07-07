@@ -1,0 +1,48 @@
+.uploads {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.uploads a {
+    color: white;
+    text-decoration: none;
+}
+
+.upload {
+    width: 500px;
+    height: 300px;
+    background-color: rgb(216, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    gap: 15px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.upload i {
+    font-size: 60px;
+}
+
+.upload:hover {
+    opacity: 0.8;
+    scale: 0.9;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .upload {
+        width: 300px;
+    }
+
+    .upload i {
+        font-size: 40px;
+    }
+
+    .upload h1 {
+        font-size: 24px
+    }
+}
