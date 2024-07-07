@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/mpk_16");
+    const URI = process.env.URI;
+    await mongoose.connect(URI);
     console.log("Connection to MongoDB was successful");
   } catch (error) {
     console.error("Failed to connect to MongoDB", error);
