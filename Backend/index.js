@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
   res.json("Hello");
 });
 
-// Middleware for handling errors
+// Middleware for handling error
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
