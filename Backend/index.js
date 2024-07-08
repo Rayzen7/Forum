@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import connectDB from './Config/connect.js';
@@ -9,18 +9,21 @@ import AdminRouter from './Routes/AdminRoutes.js';
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 app.use(cors({
-    origin: ["https://forum-user.vercel.app"], 
-    methods: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true
+  origin: ["https://forum-user.vercel.app"],
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  credentials: true,
+  preflightContinue: true,
+  optionsSuccessStatus: 204
 }));
+
 connectDB();
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000;
 
 // crud
-app.use('/uploads', express.static('uploads')); 
+app.use('/uploads', express.static('uploads'));
 app.use('/api/files', fileRouter);
 
 // login
@@ -29,10 +32,16 @@ app.use('/api/users', router);
 // Admin Login
 app.use('/api/admin', AdminRouter);
 
-app.listen(PORT, () => {(
-    console.log("server running...")
-)});
+app.listen(PORT, () => {
+  console.log("server running on port", PORT);
+});
 
 app.get("/", (req, res) => {
-    res.json("Hello");
-})
+  res.json("Hello");
+});
+
+// Middleware for handling errors
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
