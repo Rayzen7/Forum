@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json())
 app.use(cors({
-    origin: ["https://forum-user-cm0cy30n2-rayzen7s-projects.vercel.app"], 
+    origin: ["https://forum-user.vercel.app"], 
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true
 }));
