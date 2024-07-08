@@ -3,9 +3,9 @@ POST http://localhost:5000/api/users/register
 Content-Type: application/json
 
 {
-  "username": "Admin MPK SMKN 26 JAKARTA",
-  "password": "SAHITYA ANANTA MPK 26 JAKARTA",
-  "email": "AdminMPK26Jakarta@gmail.com"
+  "username": "user",
+  "password": "BERSATU KITA TEGUH BERCERAI KITA RUNTUH 71264",
+  "email": "CALONMPK17@gmail.com"
 }
 
 ### Login User
@@ -13,8 +13,8 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "setio@gmail.com",
-  "password": "123"
+  "email": "CALONMPK17@gmail.com",
+  "password": "BERSATU KITA TEGUH BERCERAI KITA RUNTUH 71264"
 }
 
 
@@ -47,9 +47,9 @@ POST http://localhost:5000/api/admin/Adminregister
 Content-Type: application/json
 
 {
-  "username": "user",
-  "password": "Rayzen7",
-  "email": "BERSATU KITA TEGUH BERCERAI KITA RUNTUH 71264"
+  "username": "ADMIN MPK SMKN 26 JAKARTA",
+  "password": "SAHITYA ANANTA MPK 26 JAKARTA",
+  "email": "AdminMPK26Jakarta@gmail.com"
 }
 
 ### Login Admin
