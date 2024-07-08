@@ -12,7 +12,7 @@ const FileList = () => {
     // Fetch files from the API
     const fetchFiles = async () => {
         try {
-            const response = await axios.get('https://forum-api-three.vercel.app/api/files/get');
+            const response = await axios.get('http://localhost:5000/api/files/get');
             setFiles(response.data);
         } catch (error) {
             console.error("Error fetching files:", error);
@@ -22,7 +22,7 @@ const FileList = () => {
     // Handle file download
     const handleDownload = async (fileId) => {
         try {
-            const response = await axios.get(`https://forum-api-three.vercel.app/api/files/download/${fileId}`, {
+            const response = await axios.get(`http://localhost:5000/api/files/download/${fileId}`, {
                 responseType: 'blob'
             });
             const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
@@ -48,7 +48,7 @@ const FileList = () => {
     // handle file delete
     const handleDelete = async (fileId) => {
         try {
-            await axios.delete(`https://forum-api-three.vercel.app/api/files/delete/${fileId}`)
+            await axios.delete(`http://localhost:5000/api/files/delete/${fileId}`)
             setFiles(files.filter(file => file._id !== fileId))
         } catch (error) {
             console.error("Error deleting file", error);

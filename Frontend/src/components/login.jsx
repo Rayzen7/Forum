@@ -24,7 +24,7 @@ const Login = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post('https://forum-api-three.vercel.app/api/users/login', {
+            const response = await axios.post('https://forum-my70kzbbc-rayzen7s-projects.vercel.app/api/users/login', {
                 email,
                 password
               });

@@ -10,11 +10,7 @@ import AdminRouter from './Routes/AdminRoutes.js';
 const app = express();
 
 app.use(express.json())
-app.use(cors({
-    origin: ["https://forum-user.vercel.app"], 
-    methods: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true
-}));
+app.use(cors());
 connectDB();
 
 const PORT = process.env.PORT

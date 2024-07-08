@@ -12,7 +12,7 @@ const Input = () => {
         formData.append('file', event.target.elements.file.files[0]);
 
         try {
-            const response = await axios.post('https://forum-api-psi.vercel.app/api/files/upload', formData, {
+            const response = await axios.post('http://localhost:5000/api/files/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -12,7 +12,7 @@ const FileList = () => {
     // Fetch files from the API
     const fetchFiles = async () => {
         try {
-            const response = await axios.get('https://forum-api-three.vercel.app/api/files/get');
+            const response = await axios.get('https://forum-my70kzbbc-rayzen7s-projects.vercel.app/api/files/get');
             setFiles(response.data);
         } catch (error) {
             console.error("Error fetching files:", error);
@@ -22,7 +22,7 @@ const FileList = () => {
     // Handle file download
     const handleDownload = async (fileId) => {
         try {
-            const response = await axios.get(`https://forum-api-three.vercel.app/api/files/download/${fileId}`, {
+            const response = await axios.get(`https://forum-my70kzbbc-rayzen7s-projects.vercel.app/api/files/download/${fileId}`, {
                 responseType: 'blob'
             });
             const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));

@@ -57,6 +57,6 @@ POST http://localhost:5000/api/admin/Adminlogin
 Content-Type: application/json
 
 {
-  "email": "Admin@gmail.com",
-  "password": "Admin1"
+  "email": "AdminMPK26Jakarta@gmail.com",
+  "password": "SAHITYA ANANTA MPK 26 JAKARTA"
 }
