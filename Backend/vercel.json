@@ -1,16 +1,15 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "src/index.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "/" },
-      { "src": "/api/files/(.*)", "dest": "/api/files/$1" },
-      { "src": "/api/admin/(.*)", "dest": "/api/admin/$1" },
-      { "src": "/api/users/(.*)", "dest": "/api/users/$1" }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/api/files/(.*)", "dest": "/api/files/$1" },
+    { "src": "/api/users/(.*)", "dest": "/api/users/$1" },
+    { "src": "/api/admin/(.*)", "dest": "/api/admin/$1" },
+    { "src": "/(.*)", "dest": "src/index.js" }
+  ]
+}
