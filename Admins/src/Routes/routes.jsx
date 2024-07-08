@@ -9,7 +9,7 @@ const Router = () => {
     <div>
         <BrowserRouter>
             <Routes>
-                <Route path='/admin' element={<LoginAdmin/>}/>
+                <Route path='/' element={<LoginAdmin/>}/>
                 <Route path='/Admin_Dashboard_Authorize_Security_Rayzen7' element={<HomeAdmin/>}/>
                 <Route path='/Input' element={<Input/>}/>
             </Routes>

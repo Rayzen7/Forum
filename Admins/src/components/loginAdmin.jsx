@@ -73,7 +73,7 @@ const LoginAdmin = () => {
             <div className={`message ${message ? 'active' : ''}`}>
                 {message && <p>{message}</p>}
             </div>
-            <p>Bukan admin? <span><a href="https://forum-user.vercel.app" style={{color:"white"}}> Masuk di sini</a></span></p>
+            <p>Bukan admin? <span><a href="https://forum-user.vercel.app/" style={{color:"white"}}> Masuk di sini</a></span></p>
         </form>
     </div>
   )
