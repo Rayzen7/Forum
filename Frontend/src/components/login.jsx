@@ -24,7 +24,7 @@ const Login = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post('http://localhost:5000/api/users/login', {
+            const response = await axios.post('https://forum-api-psi.vercel.app/api/users/login', {
                 email,
                 password
               });

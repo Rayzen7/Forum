@@ -12,7 +12,7 @@ const FileList = () => {
     // Fetch files from the API
     const fetchFiles = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/files/get');
+            const response = await axios.get('https://forum-api-psi.vercel.app/api/files/get');
             setFiles(response.data);
         } catch (error) {
             console.error("Error fetching files:", error);

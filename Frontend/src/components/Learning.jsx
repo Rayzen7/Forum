@@ -22,7 +22,7 @@ const FileList = () => {
     // Handle file download
     const handleDownload = async (fileId) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/files/download/${fileId}`, {
+            const response = await axios.get(`https://forum-api-psi.vercel.app/api/files/download/${fileId}`, {
                 responseType: 'blob'
             });
             const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
