@@ -10,7 +10,7 @@ const Router = () => {
         <Routes>
             <Route path='/' element={<Login/>}/>
             <Route path='/HomeAuthorizeSecure-Rayzen7_123' element={<Home/>}/>
-            <Route path='/Learning' element={<FileList/>}/>
+            <Route path='HomeAuthorizeSecure-Rayzen7_123/Learning' element={<FileList/>}/>
         </Routes>
     </BrowserRouter>
   )
