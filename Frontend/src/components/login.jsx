@@ -73,7 +73,7 @@ const Login = () => {
             <div className={`message ${message ? 'active' : ''}`}>
                 {message && <p>{message}</p>}
             </div>
-            <p>Admin? <span><a href="http://localhost:5173/admin" style={{color:"white"}}> Masuk di sini</a></span></p>
+            <p>Admin? <span><a href="https://forum-admin-gamma.vercel.app" style={{color:"white"}}> Masuk di sini</a></span></p>
         </form>
     </div>
   )
