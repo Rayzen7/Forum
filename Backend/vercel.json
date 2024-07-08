@@ -7,9 +7,6 @@
     }
   ],
   "routes": [
-    { "src": "/api/files/(.*)", "dest": "/api/files/$1" },
-    { "src": "/api/users/(.*)", "dest": "/api/users/$1" },
-    { "src": "/api/admin/(.*)", "dest": "/api/admin/$1" },
     { "src": "/(.*)", "dest": "/" }
   ]
 }
