@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './CSS/Learning.css'
+import './CSS/Learning.css';
+import { Link } from 'react-router-dom';
 
 const FileList = () => {
     const [files, setFiles] = useState([]);
@@ -58,7 +59,7 @@ const FileList = () => {
                     </li>
                 ))}
             </ol>
-            <a href="/HomeAuthorizeSecure-Rayzen7_123"><button>Kembali</button></a>
+            <Link to="/HomeAuthorizeSecure-Rayzen7_123" style={{textDecoration:"none", color:"black"}}><button>Kembali</button></Link>
         </div>
     );
 };
