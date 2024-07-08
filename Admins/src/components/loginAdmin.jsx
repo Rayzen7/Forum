@@ -24,7 +24,7 @@ const LoginAdmin = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post('http://localhost:5000/api/admin/Adminlogin', {
+            const response = await axios.post('https://forum-api-theta.vercel.app/api/admin/Adminlogin', {
                 email,
                 password
               });
@@ -73,7 +73,7 @@ const LoginAdmin = () => {
             <div className={`message ${message ? 'active' : ''}`}>
                 {message && <p>{message}</p>}
             </div>
-            <p>Bukan admin? <span><a href="http://localhost:5174/" style={{color:"white"}}> Masuk di sini</a></span></p>
+            <p>Bukan admin? <span><a href="https://forum-user.vercel.app" style={{color:"white"}}> Masuk di sini</a></span></p>
         </form>
     </div>
   )

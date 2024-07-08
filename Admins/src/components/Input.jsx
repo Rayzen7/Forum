@@ -2,6 +2,7 @@ import React from 'react';
 import './CSS/Input.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Input = () => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Input = () => {
         formData.append('file', event.target.elements.file.files[0]);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/files/upload', formData, {
+            const response = await axios.post('https://forum-api-theta.vercel.app/api/files/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -33,7 +34,7 @@ const Input = () => {
                     <input type="text" placeholder='Nama File' required />
                     <input type="file" name="file" required />
                     <button type='submit'>Posting</button>
-                    <button className='back'><a href="/Admin_Dashboard_Authorize_Security_Rayzen7">Back</a></button>
+                    <button className='back'><Link to="/Admin_Dashboard_Authorize_Security_Rayzen7" style={{textDecoration:"none", color:"black"}}>Back</Link></button>
                 </form>
             </div>
         </div>
