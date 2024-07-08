@@ -24,7 +24,7 @@ const LoginAdmin = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post('https://forum-api-psi.vercel.app/api/admin/Adminlogin', {
+            const response = await axios.post('https://forum-api-three.vercel.app/api/admin/Adminlogin', {
                 email,
                 password
               });
