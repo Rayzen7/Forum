@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: ["https://forum-user.vercel.app"],
+  origin: ["https://forum-user.vercel.app", "https://forum-admin-gamma.vercel.app"],
   methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true,
   preflightContinue: true,
