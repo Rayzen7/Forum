@@ -1,10 +1,11 @@
+import dotenv from 'dotenv';
+dotenv.config()
 import express from 'express';
 import cors from 'cors';
 import connectDB from './Config/connect.js';
 import router from './Routes/AuthRoutes.js';
 import fileRouter from './Routes/FileRoutes.js';
 import AdminRouter from './Routes/AdminRoutes.js';
-import dotenv from 'dotenv';
 
 const app = express();
 
@@ -16,7 +17,6 @@ app.use(cors({
 }));
 connectDB();
 
-dotenv.config()
 const PORT = process.env.PORT
 
 // crud
