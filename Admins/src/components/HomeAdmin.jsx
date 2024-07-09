@@ -9,7 +9,7 @@ const HomeAdmin = () => {
     <div className='homeAdmin' data-aos="fade-up">
         <Upload/>
         <FileList/>
-        <Link to="/admin" style={{textDecoration:"none", color:"white"}}><button>Keluar</button></Link>
+        <Link to="/" style={{textDecoration:"none", color:"white"}}><button>Keluar</button></Link>
     </div>
   )
 }
