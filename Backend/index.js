@@ -6,7 +6,6 @@ import connectDB from './Config/connect.js';
 import router from './Routes/AuthRoutes.js';
 import fileRouter from './Routes/FileRoutes.js';
 import AdminRouter from './Routes/AdminRoutes.js';
-import { uploadFile, uploads } from './Controllers/fileController.js';
 
 const app = express();
 
@@ -24,7 +23,6 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 
 // crud
-app.use('/uploads', uploads, uploadFile);
 app.use('/api/files', fileRouter);
 
 // login

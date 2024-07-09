@@ -1,15 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const fileSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    filePath: {
+    link: {
         type: String,
         required: true
     }
 });
 
 const File = mongoose.model('File', fileSchema);
+
 export default File;
