@@ -44,6 +44,7 @@ export const uploadFile = async (req, res) => {
         });
 
         blobStream.on('error', (err) => {
+            console.error('Blob stream error:', err);
             throw new Error(err);
         });
 
@@ -52,6 +53,7 @@ export const uploadFile = async (req, res) => {
 
             const newFile = new File({ name: file.originalname, filePath: downloadURL });
             await newFile.save();
+            console.log('File uploaded successfully:', newFile);
             res.status(201).json({ message: "File uploaded successfully", file: newFile });
         });
 
@@ -68,6 +70,7 @@ export const getFiles = async (req, res) => {
         const files = await File.find();
         res.status(200).json(files);
     } catch (error) {
+        console.error('Error reading files:', error);
         res.status(500).json({ message: "Error reading files", error });
     }
 };
@@ -82,6 +85,7 @@ export const downloadFile = async (req, res) => {
         }
 
         const downloadURL = file.filePath;
+        console.log('Download URL:', downloadURL);
         res.status(200).json({ downloadURL });
     } catch (error) {
         console.error('Error downloading file:', error);
@@ -102,6 +106,7 @@ export const deleteFile = async (req, res) => {
         await storage.file(filePath).delete();
 
         await File.findByIdAndDelete(fileId);
+        console.log('File deleted successfully:', file);
         res.status(200).json({ message: 'File deleted successfully' });
     } catch (error) {
         console.error('Error deleting file:', error);
