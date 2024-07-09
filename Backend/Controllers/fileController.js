@@ -3,9 +3,8 @@ import { getStorage } from 'firebase-admin/storage';
 import multer from 'multer';
 import File from '../Models/file.js';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import { readFileSync } from 'fs';
-import dotenv from 'dotenv'
+import { dirname } from 'path';
+import dotenv from 'dotenv';
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -40,7 +39,8 @@ export const uploadFile = async (req, res) => {
     try {
         const blob = storage.file(`Files/${file.originalname}`);
         const blobStream = blob.createWriteStream({
-            resumable: false
+            resumable: false,
+            contentType: file.mimetype
         });
 
         blobStream.on('error', (err) => {
