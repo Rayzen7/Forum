@@ -11,7 +11,7 @@ const FileList = () => {
 
     const fetchFiles = async () => {
         try {
-            const response = await axios.get('https://vercel.com/rayzen7s-projects/forum-api/api/files/get');
+            const response = await axios.get('https://forum-api-theta.vercel.app/api/files/get');
             setFiles(response.data);
         } catch (error) {
             console.error('Error fetching files:', error);
@@ -20,7 +20,7 @@ const FileList = () => {
 
     const handleDelete = async (fileId) => {
         try {
-            await axios.delete(`https://vercel.com/rayzen7s-projects/forum-api/api/files/download/${fileId}`);
+            await axios.delete(`https://forum-api-theta.vercel.app/api/files/download/${fileId}`);
             setFiles(files.filter(file => file._id !== fileId));
         } catch (error) {
             console.error('Error deleting file:', error);
