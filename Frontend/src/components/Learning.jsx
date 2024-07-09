@@ -11,7 +11,7 @@ const FileList = () => {
 
     const fetchFiles = async () => {
         try {
-            const response = await axios.get('https://vercel.com/rayzen7s-projects/forum-api/api/files/get');
+            const response = await axios.get('https://forum-api-theta.vercel.app/api/files/get');
             setFiles(response.data);
         } catch (error) {
             console.error('Error fetching files:', error);
