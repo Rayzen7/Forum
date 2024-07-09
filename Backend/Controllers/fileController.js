@@ -5,12 +5,13 @@ import File from '../Models/file.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readFileSync } from 'fs';
+import dotenv from 'dotenv'
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const serviceAccountPath = join(__dirname, '../forum-crud-firebase-adminsdk-6ooif-bf13c7844e.json');
-const serviceAccount = JSON.parse(readFileSync(serviceAccountPath, 'utf-8'));
+const serviceAccount = JSON.parse(process.env.STORAGE);
 
 // Inisialisasi Firebase Admin SDK
 try {
