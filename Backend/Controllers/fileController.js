@@ -1,41 +1,73 @@
-import File from "../Models/file.js";
+import admin from 'firebase-admin';
+import { getStorage } from 'firebase-admin/storage';
 import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from "url";
+import File from '../Models/file.js';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { readFileSync } from 'fs';
 
-// Config multer for storage
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.resolve('./Uploads'));
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
-    }
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-export const uploads = multer({ storage }).single('file');
+const serviceAccountPath = join(__dirname, '../forum-crud-firebase-adminsdk-6ooif-bf13c7844e.json');
+const serviceAccount = JSON.parse(readFileSync(serviceAccountPath, 'utf-8'));
 
-// upload file
+// Inisialisasi Firebase Admin SDK
+try {
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        storageBucket: "forum-crud.appspot.com"
+    });
+} catch (error) {
+    console.error('Error initializing Firebase:', error);
+    process.exit(1);
+}
+
+const storage = getStorage().bucket();
+
+// Multer configuration
+const multerStorage = multer.memoryStorage(); // Use memory storage for multer
+export const uploads = multer({ storage: multerStorage }).single('file');
+
+// Upload file
 export const uploadFile = async (req, res) => {
-    const filePath = req.file.path;
+    const file = req.file;
+    if (!file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
 
     try {
-        const newFile = new File({ name: req.file.filename, filePath });
-        await newFile.save();
-        res.status(201).json({ message: "file uploaded succes", file: newFile });
+        const blob = storage.file(`Files/${file.originalname}`);
+        const blobStream = blob.createWriteStream({
+            resumable: false
+        });
+
+        blobStream.on('error', (err) => {
+            throw new Error(err);
+        });
+
+        blobStream.on('finish', async () => {
+            const downloadURL = `https://storage.googleapis.com/${storage.name}/Files/${file.originalname}`;
+
+            const newFile = new File({ name: file.originalname, filePath: downloadURL });
+            await newFile.save();
+            res.status(201).json({ message: "File uploaded successfully", file: newFile });
+        });
+
+        blobStream.end(file.buffer);
     } catch (error) {
-        res.status(500).json({ message: "Error uploading", error });
+        console.error('Error uploading file:', error);
+        res.status(500).json({ message: 'Error uploading file', error });
     }
 };
 
-// Read file
-export const getFiles = async(req, res) => {
+// Read files
+export const getFiles = async (req, res) => {
     try {
         const files = await File.find();
         res.status(200).json(files);
     } catch (error) {
-        res.status(500).json({ message: "Error read file", error });
+        res.status(500).json({ message: "Error reading files", error });
     }
 };
 
@@ -48,24 +80,8 @@ export const downloadFile = async (req, res) => {
             return res.status(404).json({ message: 'File not found' });
         }
 
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);
-        const filePath = path.resolve(__dirname, '..', file.filePath);
-
-        // Check if file exists before attempting to read
-        if (!fs.existsSync(filePath)) {
-            return res.status(404).json({ message: 'File not found in filesystem' });
-        }
-
-        // response stream
-        const fileStream = fs.createReadStream(filePath);
-
-        // response headers
-        res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', `attachment; filename=${file.name}`);
-        
-        // streaming file
-        fileStream.pipe(res);
+        const downloadURL = file.filePath;
+        res.status(200).json({ downloadURL });
     } catch (error) {
         console.error('Error downloading file:', error);
         res.status(500).json({ message: 'Error downloading file', error });
@@ -76,32 +92,15 @@ export const downloadFile = async (req, res) => {
 export const deleteFile = async (req, res) => {
     const fileId = req.params.fileId;
     try {
-        // Search by id
         const file = await File.findById(fileId);
         if (!file) {
             return res.status(404).json({ message: 'File not found' });
         }
 
-        // path file
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);
-        const filePath = path.resolve(__dirname, '..', file.filePath);
+        const filePath = `Files/${file.name}`;
+        await storage.file(filePath).delete();
 
-        // cheack
-        if (!fs.existsSync(filePath)) {
-            return res.status(404).json({ message: 'File not found in filesystem' });
-        }
-
-        // remove file from file explorer
-        fs.unlinkSync(filePath);
-
-        // remove file from database
-        const deletedFile = await File.findByIdAndDelete(fileId);
-        if (!deletedFile) {
-            return res.status(404).json({ message: 'File not found in database' });
-        }
-
-        // response
+        await File.findByIdAndDelete(fileId);
         res.status(200).json({ message: 'File deleted successfully' });
     } catch (error) {
         console.error('Error deleting file:', error);

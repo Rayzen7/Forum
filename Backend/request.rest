@@ -25,10 +25,10 @@ POST http://localhost:5000/api/files/upload
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="Contoh.pdf"
+Content-Disposition: form-data; name="file"; filename="Komputasional.pdf"
 Content-Type: application/pdf
 
-< ../../Uploads/Komputasional.pdf
+< ../../Uploads/Internet.pdf
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### Get All Files
@@ -37,7 +37,7 @@ GET http://localhost:5000/api/files/get
 ### Download File
 GET http://localhost:5000/api/files/download/668a9ed879df594da9d6ed07
 
-### Delete File by ID ###
+### Delete File by ID
 DELETE http://localhost:5000/api/files/delete/668aa185957b31f909b0acc5
 Content-Type: application/json
 
