@@ -40,7 +40,7 @@ export const uploadFile = async (req, res) => {
         const blob = storage.file(`Files/${file.originalname}`);
         const blobStream = blob.createWriteStream({
             resumable: false,
-            contentType: file.mimetype
+            contentType: 'application/pdf'
         });
 
         blobStream.on('error', (err) => {
