@@ -20,7 +20,7 @@ const FileList = () => {
 
     const handleDelete = async (fileId) => {
         try {
-            await axios.delete(`https://forum-api-theta.vercel.app/api/files/download/${fileId}`);
+            await axios.delete(`https://forum-api-theta.vercel.app/api/files/delete/${fileId}`);
             setFiles(files.filter(file => file._id !== fileId));
         } catch (error) {
             console.error('Error deleting file:', error);
